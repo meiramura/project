@@ -1,7 +1,6 @@
 import {users} from "../data/users";
 
 export class UserService {
-    private users: any[] = []
     public getAll() {
         return users;
     }
@@ -30,6 +29,6 @@ export class UserService {
 
         users.splice(index,1);
 
-        return this.users;
+        return users;
     }
 }

@@ -1,5 +1,6 @@
-import {Body, Controller, Delete, Get, Post, Route} from "tsoa";
+import {Body, Controller, Delete, Get, Post, Route, Path} from "tsoa";
 import {UserService} from "../services/UserService";
+
 
 @Route("users")
 export class UserController extends Controller {
@@ -12,12 +13,13 @@ export class UserController extends Controller {
     }
 
     @Get("{id}")
-    public getUser(id:number){
+    public getUser(@Path() id:number){
         return this.userService.getById(id);
     }
 
     @Post()
-    public createUser(@Body() body:any) {
+    public createUser(@Body() body: { name:string }
+    ): Promise<string> {
         return this.userService.create(body);
     }
 
